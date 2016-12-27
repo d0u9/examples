@@ -142,25 +142,20 @@ int main(void)
 
 	// First of all, we need to create a socket with the AF_NETLINK domain
 	fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);
+	check(fd);
 
 	struct sockaddr_nl sa;
 	memset(&sa, 0, sizeof(sa));
 	sa.nl_family = AF_NETLINK;
 
 	len = get_ip(fd, &sa, AF_INET); // To get ipv6, use AF_INET6 instead
-	if (len < 0) {
-		printf("error: %s\n", strerror(errno));
-		return -1;
-	}
+	check(len);
 
 	char buf[BUFLEN];
 	uint32_t nl_msg_type;
 	do {
 		len = get_msg(fd, &sa, buf, BUFLEN);
-		if (len <= 0) {
-			printf("error: %s\n", strerror(errno));
-			return -1;
-		}
+		check(len);
 
 		nl_msg_type = parse_nl_msg(buf, len);
 	} while (nl_msg_type != NLMSG_DONE && nl_msg_type != NLMSG_ERROR);
