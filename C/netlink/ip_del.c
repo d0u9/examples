@@ -146,7 +146,19 @@ int main(void)
 	nl_msg_type = parse_nl_msg(buf, len);
 	if (nl_msg_type == NLMSG_ERROR) {
 		struct nlmsgerr *err = (struct nlmsgerr*)NLMSG_DATA(buf);
-		printf("ack: %s\n", strerror(err->error));
+		switch (err->error) {
+		case 0:
+			printf("Success\n");
+			break;
+		case -EADDRNOTAVAIL:
+			printf("Failed\n");
+			break;
+		case -EPERM:
+			printf("Permission denied\n");
+			break;
+		default:
+			printf("%s\n", strerror(err->error));
+		}
 	}
 
 	return 0;
