@@ -48,7 +48,7 @@ int pton(int domain, void *buf, const char *ip)
 
 
 static
-int del_ip(int fd, struct sockaddr_nl *sa, int domain, const char *ip)
+int add_ip(int fd, struct sockaddr_nl *sa, int domain, const char *ip)
 {
 	char buf[BUFLEN];
 	int ip_len = 0;
@@ -137,7 +137,7 @@ int main(void)
 	memset(&sa, 0, sizeof(sa));
 	sa.nl_family = AF_NETLINK;
 
-	del_ip(fd, &sa, AF_INET, "172.16.10.111");
+	add_ip(fd, &sa, AF_INET, "172.16.10.111");
 
 	// after sending, we need to check the result
 	char buf[BUFLEN];
