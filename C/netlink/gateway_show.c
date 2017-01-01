@@ -51,13 +51,13 @@ int get_gateway(int fd, struct sockaddr_nl *sa, int domain)
 	// assemble the message according to the netlink protocol
 	struct nlmsghdr *nl;
 	nl = (struct nlmsghdr*)buf;
-	nl->nlmsg_len = NLMSG_LENGTH(sizeof(struct ifaddrmsg));
+	nl->nlmsg_len = NLMSG_LENGTH(sizeof(struct rtmsg));
 	nl->nlmsg_type = RTM_GETROUTE;
 	nl->nlmsg_flags = NLM_F_REQUEST | NLM_F_ROOT;
 
-	struct ifaddrmsg *ifa;
-	ifa = (struct ifaddrmsg*)NLMSG_DATA(nl);
-	ifa->ifa_family = domain; // we only get ipv4 address here
+	struct rtmsg *rt;
+	rt = (struct rtmsg*)NLMSG_DATA(nl);
+	rt->rtm_family = domain;
 
 	// prepare struct msghdr for sending.
 	struct iovec iov = { nl, nl->nlmsg_len };
