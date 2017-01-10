@@ -6,6 +6,7 @@
 #include <arpa/inet.h>
 #include <net/if.h>
 
+#define NEW_IP		"192.168.1.2"
 #define BUFLEN		4096
 
 #define for_each_nlmsg(n, buf, len)					\
@@ -137,7 +138,7 @@ int main(void)
 	memset(&sa, 0, sizeof(sa));
 	sa.nl_family = AF_NETLINK;
 
-	add_ip(fd, &sa, AF_INET, "172.16.10.111");
+	add_ip(fd, &sa, AF_INET, NEW_IP);
 
 	// after sending, we need to check the result
 	char buf[BUFLEN];
