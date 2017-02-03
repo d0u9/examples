@@ -1,6 +1,6 @@
-#ifndef _LIB_SUM_H
-#define _LIB_SUM_H
+#ifndef _LIB_PRINT_H
+#define _LIB_PRINT_H
 
-extern void print(void);
+extern void print_hello(void);
 
 #endif /* _LIB_SUM_H */

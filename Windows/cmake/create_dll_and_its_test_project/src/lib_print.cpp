@@ -2,7 +2,7 @@
 
 #include <lib_print.h>
 
-void print(void)
+void print_hello(void)
 {
 	printf("Hello World\n");
 }
