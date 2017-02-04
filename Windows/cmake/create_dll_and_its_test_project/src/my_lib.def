@@ -1,4 +1,4 @@
 LIBRARY
 EXPORTS
 sum2
-print
+print_hello
