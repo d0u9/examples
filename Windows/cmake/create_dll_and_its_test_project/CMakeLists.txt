@@ -14,3 +14,6 @@ file (GLOB DEFS_MAIN "src/*.def")
 include (GenerateExportHeader)
 
 add_library (my_lib SHARED ${SRCS_MAIN} ${HDRS_MAIN} ${DEFS_MAIN})
+
+# test_project
+add_subdirectory ("${PROJECT_SOURCE_DIR}/test_project")
