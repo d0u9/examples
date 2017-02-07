@@ -17,3 +17,5 @@ add_library (my_lib SHARED ${SRCS_MAIN} ${HDRS_MAIN} ${DEFS_MAIN})
 
 # test_project
 add_subdirectory ("${PROJECT_SOURCE_DIR}/test_project")
+
+set_property (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT test_project)
