@@ -1,0 +1,4 @@
+LIBRARY
+EXPORTS
+sum2
+print_hello
