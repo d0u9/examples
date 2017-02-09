@@ -11,7 +11,7 @@ file (GLOB SRCS_MAIN "src/*.cpp")
 file (GLOB HDRS_MAIN "include/*.h")
 file (GLOB DEFS_MAIN "src/*.def")
 
-include (GenerateExportHeader)
+## include (GenerateExportHeader)
 
 add_library (my_lib SHARED ${SRCS_MAIN} ${HDRS_MAIN} ${DEFS_MAIN})
 
