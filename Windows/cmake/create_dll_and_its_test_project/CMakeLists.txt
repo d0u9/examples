@@ -13,7 +13,7 @@ file (GLOB DEFS_MAIN "src/*.def")
 
 add_library (my_lib SHARED ${SRCS_MAIN} ${HDRS_MAIN} ${DEFS_MAIN})
 
-# Uncomment the below line for setting unicode encoding as the default.
+# Uncomment the following line to set unicode encoding as the default.
 #target_compile_definitions (my_lib PRIVATE -D_UNICODE -DUNICODE)
 
 # test_project
